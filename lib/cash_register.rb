@@ -18,16 +18,15 @@ class CashRegister
         @items << title
       end
     else
-      new_item_price = price #if not, just once
-      @items << title
+      new_item_price = price
+      @items << title       #if not, just once
     end
     @total += new_item_price
   end
 
   def apply_discount
-    # binding.pry
-    @total = (@total - @total * @discount.to_f/100.0).to_i #math in programming is ugly. I get why, but eww.
     if @discount != 0
+      @total = (@total * ((100 - @discount.to_f)/100.0)).to_i #math in programming is ugly. I get why, but eww.
       "After the discount, the total comes to $#{@total}."
     else
        "There is no discount to apply."
